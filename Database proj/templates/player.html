@@ -1,0 +1,152 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Players</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  
+</head>
+<body>
+
+  <h1>Champions League Players</h1>
+
+  <div class="dropdown-container">
+    <label for="teamSelect">Select Team:</label>
+    <select id="teamSelect">
+      <option value="all">All Teams</option>
+      <!-- Teams will auto-populate based on loaded players 
+    </select>
+  </div>
+
+  <table id="playerTable">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Goals</th>
+        <th>Assists</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+fetch("/api/players")
+  .then(response => response.json())
+  .then(players => {
+    const tableBody = document.querySelector("#playerTable tbody");
+    const teamSelect = document.getElementById("teamSelect");
+
+    const uniqueTeams = [...new Set(players.map(p => p.team))];
+    uniqueTeams.forEach(team => {
+      const option = document.createElement("option");
+      option.value = team;
+      option.textContent = team;
+      teamSelect.appendChild(option);
+    });
+
+    function loadPlayers(filterTeam) {
+      tableBody.innerHTML = "";
+      const filtered = filterTeam === "all" ? players : players.filter(p => p.team === filterTeam);
+
+      filtered.forEach(player => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${player.name}</td>
+          <td>${player.team}</td>
+          <td>${player.position}</td>
+          <td>${player.goals || 0}</td>
+          <td>${player.assists || 0}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    teamSelect.addEventListener("change", () => {
+      loadPlayers(teamSelect.value);
+    });
+
+    loadPlayers("all");
+  });
+</script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Players</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>Champions League Players</h1>
+
+  <div class="dropdown-container">
+    <label for="teamSelect">Select Team:</label>
+    <select id="teamSelect">
+      <option value="all">All Teams</option>
+    </select>
+  </div>
+
+  <table id="playerTable">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Goals</th>
+        <th>Assists</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+fetch("/api/players")
+  .then(response => response.json())
+  .then(players => {
+    const tableBody = document.querySelector("#playerTable tbody");
+    const teamSelect = document.getElementById("teamSelect");
+
+    const uniqueTeams = [...new Set(players.map(p => p.team))];
+    uniqueTeams.forEach(team => {
+      const option = document.createElement("option");
+      option.value = team;
+      option.textContent = team;
+      teamSelect.appendChild(option);
+    });
+
+    function loadPlayers(filterTeam) {
+      tableBody.innerHTML = "";
+      const filtered = filterTeam === "all" ? players : players.filter(p => p.team === filterTeam);
+
+      filtered.forEach(player => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${player.name}</td>
+          <td>${player.team}</td>
+          <td>${player.position}</td>
+          <td>${player.goals || 0}</td>
+          <td>${player.assists || 0}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    teamSelect.addEventListener("change", () => {
+      loadPlayers(teamSelect.value);
+    });
+
+    loadPlayers("all");
+  });
+</script>
+
+</body>
+</html>

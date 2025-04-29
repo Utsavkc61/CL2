@@ -1,0 +1,146 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Groups</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}"></script>  
+</head>
+<body>
+
+  <h1>UEFA Champions League</h1>
+
+  <div class="dropdown-container">
+    <label for="groupSelect">Select Group:</label>
+    <select id="groupSelect">
+      <option value="A">Group A</option>
+      <option value="B">Group B</option>
+      <option value="C">Group C</option>
+      <!-- Add more groups if needed 
+    </select>
+  </div>
+
+  <div class="group-name" id="groupName">Group A</div>
+
+  <table id="groupTable">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Loss</th>
+        <th>Draw</th>
+        <th>Points</th>
+        <th>Goal Difference</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+function loadGroup(groupId) {
+  fetch(`/api/standings/${groupId}`)
+    .then(response => response.json())
+    .then(teams => {
+      const tbody = document.querySelector("#groupTable tbody");
+      tbody.innerHTML = "";
+
+      teams.forEach(team => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${team.team_name}</td>
+          <td>${team.wins}</td>
+          <td>${team.loss}</td>
+          <td>${team.draw}</td>
+          <td>${team.points}</td>
+          <td>${team.goal_difference}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById("groupName").textContent = "Group " + groupId;
+    });
+}
+
+document.getElementById("groupSelect").addEventListener("change", function () {
+  loadGroup(this.value);
+});
+
+// Load initial group
+loadGroup("A");
+</script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Groups</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>UEFA Champions League</h1>
+
+  <div class="dropdown-container">
+    <label for="groupSelect">Select Group:</label>
+    <select id="groupSelect">
+      <option value="A">Group A</option>
+      <option value="B">Group B</option>
+      <option value="C">Group C</option>
+    </select>
+  </div>
+
+  <div class="group-name" id="groupName">Group A</div>
+
+  <table id="groupTable">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Loss</th>
+        <th>Draw</th>
+        <th>Points</th>
+        <th>Goal Difference</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+function loadGroup(groupId) {
+  fetch(`/api/standings/${groupId}`)
+    .then(response => response.json())
+    .then(teams => {
+      const tbody = document.querySelector("#groupTable tbody");
+      tbody.innerHTML = "";
+
+      teams.forEach(team => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${team.team_name}</td>
+          <td>${team.wins}</td>
+          <td>${team.loss}</td>
+          <td>${team.draw}</td>
+          <td>${team.points}</td>
+          <td>${team.goal_difference}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById("groupName").textContent = "Group " + groupId;
+    });
+}
+
+document.getElementById("groupSelect").addEventListener("change", function () {
+  loadGroup(this.value);
+});
+
+loadGroup("A");
+</script>
+
+</body>
+</html>

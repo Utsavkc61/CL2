@@ -1,0 +1,111 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Matches</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  
+</head>
+<body>
+
+  <h1>Champions League Matches</h1>
+
+  <div id="matchesContainer"></div>
+
+<script>
+fetch("/api/matches")
+  .then(response => response.json())
+  .then(matches => {
+    const groupedMatches = matches.reduce((acc, match) => {
+      acc[match.match_date] = acc[match.match_date] || [];
+      acc[match.match_date].push(match);
+      return acc;
+    }, {});
+
+    const container = document.getElementById("matchesContainer");
+
+    for (const date in groupedMatches) {
+      const dateBlock = document.createElement("div");
+      dateBlock.className = "date-block";
+
+      const dateHeading = document.createElement("div");
+      dateHeading.className = "match-date";
+      dateHeading.textContent = new Date(date).toDateString();
+      dateBlock.appendChild(dateHeading);
+
+      groupedMatches[date].forEach(match => {
+        const matchDiv = document.createElement("div");
+        matchDiv.className = "match";
+
+        matchDiv.innerHTML = `
+          <div class="team">${match.home_team || "TBD"}</div>
+          <div class="vs">vs</div>
+          <div class="team">${match.away_team || "TBD"}</div>
+        `;
+        dateBlock.appendChild(matchDiv);
+      });
+
+      container.appendChild(dateBlock);
+    }
+  });
+</script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Champions League Matches</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>Champions League Matches</h1>
+
+  <div id="matchesContainer"></div>
+
+<script>
+fetch("/api/matches")
+  .then(response => response.json())
+  .then(matches => {
+    const groupedMatches = matches.reduce((acc, match) => {
+      acc[match.match_date] = acc[match.match_date] || [];
+      acc[match.match_date].push(match);
+      return acc;
+    }, {});
+
+    const container = document.getElementById("matchesContainer");
+
+    for (const date in groupedMatches) {
+      const dateBlock = document.createElement("div");
+      dateBlock.className = "date-block";
+
+      const dateHeading = document.createElement("div");
+      dateHeading.className = "match-date";
+      dateHeading.textContent = new Date(date).toDateString();
+      dateBlock.appendChild(dateHeading);
+
+      groupedMatches[date].forEach(match => {
+        const matchDiv = document.createElement("div");
+        matchDiv.className = "match";
+
+        matchDiv.innerHTML = `
+          <div class="team">${match.home_team || "TBD"}</div>
+          <div class="vs">vs</div>
+          <div class="team">${match.away_team || "TBD"}</div>
+        `;
+        dateBlock.appendChild(matchDiv);
+      });
+
+      container.appendChild(dateBlock);
+    }
+  });
+</script>
+
+</body>
+</html>
